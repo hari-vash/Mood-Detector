@@ -34,6 +34,11 @@ def format(base_dir,state,special_emotions,emotions):
         emotion_dir = os.path.join(base_dir,state,emotion)
         os.rmdir(emotion_dir)
 
+def rename(base_dir,state,directory_names):
+    for emotion in directory_names:
+        old_name = os.path.join(base_dir,state,emotion)
+        new_name = os.path.join(base_dir,state,str(directory_names[emotion]))
+        os.rename(old_name,new_name)
 
 # Define the paths to the directories
 base_dir = "./fer2013/"
@@ -41,8 +46,9 @@ emotions = ['angry', 'fear', 'happy', 'neutral', 'sad']
 special_emotions = ['disgust', 'surprise']
 target_size = 3600
 states = ['train','test']
+directory_names = {"angry": 0, "fear": 1, "happy": 2, "neutral": 3, "sad": 4, "shock": 5}
 
 for state in states:
     format(base_dir,state,special_emotions,emotions)    
-
+    rename(base_dir,state,directory_names)
 print("Dataset formatted successfully!")
