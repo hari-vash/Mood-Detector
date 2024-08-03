@@ -1,34 +1,28 @@
 import cv2 as cv
 import torch
 from torchvision import transforms
-from structure import * 
+from structure import *
 
-
-model = torch.load('mood_detector.pth', map_location=torch.device('cpu'))
-model.eval()
-
+model = torch.load('mood-detector.pth', map_location=torch.device('cpu'))
 
 class_labels = ['angry', 'fear', 'happy', 'neutral', 'sad', 'shock']
 
+def preprocess_image(img):
+    gray = cv.cvtColor(img, cv.COLOR_BGR2GRAY)
+    inverted = 255 - gray
+    blurred = cv.GaussianBlur(inverted, (21, 21), 0)
+    drawing = cv.divide(gray, 255 - blurred, scale=256)
+    drawing_resized = cv.resize(drawing, (48, 48))
+    img_arr = drawing_resized.astype('float32')
+    return img_arr
 
-# Define the expected input size for the model
-input_size = (48, 48)
-
-transform = transforms.Compose([
-    transforms.ToPILImage(),
-    transforms.Resize(input_size),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
-
-def getClass(model, img):
-    img = transform(img).unsqueeze(0)  
-    with torch.no_grad():
-        pred_logit = model(img)
-        pred_prob = torch.softmax(pred_logit.squeeze(), dim=0)
-        predicted_class = torch.argmax(pred_prob).item()
-        text = class_labels[predicted_class]
-    return text
+def getClass(model, img_arr, class_names):
+    img_tensor = torch.tensor(img_arr).unsqueeze(0).unsqueeze(0)  # Add batch and channel dimensions
+    logit = model(img_tensor)
+    pred = torch.softmax(logit.squeeze(), dim=0)
+    class_ = torch.argmax(pred).item()
+    class_name = class_names[class_]
+    return class_name
 
 def getTextDimension(top_left, bottom_right, text_size):
     text_X = top_left[0] + (bottom_right[0] - top_left[0] - text_size[0]) // 2
@@ -53,17 +47,16 @@ while True:
     if not isTrue:
         break
 
-    gray_frame = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
-    faces = face_cascade.detectMultiScale(gray_frame, 1.1, 4)
+    faces = face_cascade.detectMultiScale(frame, 1.1, 4)
 
     for (x, y, w, h) in faces:
         face_region = frame[y:y+h, x:x+w]
-        mood_prediction = getClass(model, face_region)
+        img_arr = preprocess_image(face_region)
+        mood_prediction = getClass(model, img_arr, class_labels)
         cv.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
         displayText(mood_prediction, (x, y), (x+w, y+h), frame)
 
     cv.imshow('Face Detection', frame)
-
 
     k = cv.waitKey(30) & 0xff
     if k == 27:
