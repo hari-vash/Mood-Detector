@@ -26,8 +26,14 @@ def format(base_dir,state,special_emotions,emotions):
     if state=='train':
         for emotion in emotions:
             emotion_dir = os.path.join(base_dir,state,emotion)
-            reduce_files(emotion_dir,target_size)
-        reduce_files(shock_dir,target_size)
+            reduce_files(emotion_dir,target_size_train)
+        reduce_files(shock_dir,target_size_train)
+    elif state=='test':
+        for emotion in emotions:
+            emotion_dir = os.path.join(base_dir,state,emotion)
+            reduce_files(emotion_dir,target_size_test)
+        reduce_files(shock_dir,target_size_test)
+    
     
     # Clean up old disgust and surprise directories
     for emotion in special_emotions:
@@ -44,7 +50,8 @@ def rename(base_dir,state,directory_names):
 base_dir = "./fer2013/"
 emotions = ['angry', 'fear', 'happy', 'neutral', 'sad']
 special_emotions = ['disgust', 'surprise']
-target_size = 3600
+target_size_train = 3600
+target_size_test = 940
 states = ['train','test']
 directory_names = {"angry": 0, "fear": 1, "happy": 2, "neutral": 3, "sad": 4, "shock": 5}
 
