@@ -49,7 +49,7 @@ class Face_Detection(nn.Module):
             nn.ReLU()
         )
 
-        self.block6 = nn.Sequential(
+        self.block7 = nn.Sequential(
             nn.Conv2d(in_channels = 256, out_channels = 256, kernel_size =3),
             nn.Dropout(p=0.3),
             nn.BatchNorm2d(256),
@@ -80,6 +80,7 @@ class Face_Detection(nn.Module):
         x = self.block4(x)
         x = self.block5(x)
         x = self.block6(x)
+        x = self.block7(x)
         x = self.classifier1(x)
         x = self.classifier2(x)
         x = self.classifier3(x)
