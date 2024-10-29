@@ -29,7 +29,7 @@ class Face_Detection(nn.Module):
         self.block4 = nn.Sequential(
             nn.Conv2d(in_channels = 32, out_channels = 64, kernel_size = 3),
             nn.Dropout(p=0.3),
-            nn.BatchNorm2d(2,1),
+            nn.BatchNorm2d(64),
             nn.MaxPool2d(2,1),
             nn.ReLU()
         )
