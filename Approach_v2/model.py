@@ -3,6 +3,7 @@ import torch
 
 class Face_Detection(nn.Module):
     def __init__(self):
+        super().__init__()
         self.block1 = nn.Sequential(
             nn.Conv2d(in_channels = 1, out_channels = 8, kernel_size=3),
             nn.BatchNorm2d(8),
@@ -29,7 +30,7 @@ class Face_Detection(nn.Module):
             nn.Conv2d(in_channels = 32, out_channels = 64, kernel_size = 3),
             nn.Dropout(p=0.3),
             nn.BatchNorm2d(2,1),
-            nn.Maxpool2d(2,1),
+            nn.MaxPool2d(2,1),
             nn.ReLU()
         )
 
@@ -58,17 +59,17 @@ class Face_Detection(nn.Module):
 
         self.classifier1 = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(in_channels = 1024, out_channels = 512),
+            nn.Linear(1024,512),
             nn.ReLU()
         )
 
         self.classifier2 = nn.Sequential(
-            nn.Linear(in_channels = 512, out_channels = 256),
+            nn.Linear(512,256),
             nn.ReLU()
         )
 
         self.classifier3 = nn.Sequential(
-            nn.Linear(in_channels = 256, out_channels = 5),
+            nn.Linear(256,5),
             nn.LogSoftmax(dim=1)
         )
 
