@@ -1,11 +1,11 @@
 import torch
 import numpy as np
-from sklearn.metrics import f1_score
+from sklearn.metrics import f1_score,classification_report
 from pathlib import Path
 import logging
 
 class Trainer:
-    def __init__(self, epochs, model, train_dataloader, validation_dataloader, optimizer, criterion, device, save_dir="../models", logger=None):
+    def __init__(self, epochs, model, train_dataloader, validation_dataloader, optimizer, criterion, device, save_dir="../model", logger=None):
         self.device = device
         self.model = model.to(self.device)
         self.train_dataloader = train_dataloader
@@ -112,3 +112,53 @@ class Trainer:
                 
         self.logger.info("Training complete.")
         return self.history
+    
+    
+class Evaluator:
+    def __init__(self, model, test_dataloader, criterion, device, logger=None):
+        self.device = device
+        self.model = model.to(self.device)
+        self.test_dataloader = test_dataloader
+        self.criterion = criterion
+        self.logger = logger or logging.getLogger(__name__)
+        
+    def evaluate(self):
+        """Evaluates the model on unseen test data and logs the performance metrics."""
+        self.logger.info("Evaluating Model on the unseen test data...")
+        self.model.eval()
+        
+        test_loss = 0.0
+        correct_test = 0
+        total_samples = len(self.test_dataloader.dataset)
+        
+        all_test_preds = []
+        all_test_labels = []
+        
+        with torch.no_grad():
+            for test_images, test_labels in self.test_dataloader:
+                test_images, test_labels = test_images.to(self.device), test_labels.to(self.device)
+                
+                test_outputs = self.model(test_images)
+                loss = self.criterion(test_outputs, test_labels)
+                
+                test_loss += loss.item() * test_images.size(0)
+                
+                _, preds = torch.max(test_outputs, 1)
+                correct_test += (preds == test_labels).sum().item()
+                
+                all_test_preds.append(preds)
+                all_test_labels.append(test_labels)
+
+        final_preds = torch.cat(all_test_preds).cpu().numpy()
+        final_labels = torch.cat(all_test_labels).cpu().numpy()
+        
+        avg_test_loss = test_loss / total_samples
+        test_acc = (correct_test / total_samples) * 100
+        macro_f1 = f1_score(final_labels, final_preds, average="macro")
+        
+        self.logger.info(f"Test Results | Loss: {avg_test_loss:.4f} | Accuracy: {test_acc:.2f}% | Macro F1: {macro_f1:.4f}")
+        
+        class_report = classification_report(final_labels, final_preds, digits=4)
+        self.logger.info(f"\nDetailed Classification Report:\n{class_report}")
+        
+        return avg_test_loss, test_acc, macro_f1
