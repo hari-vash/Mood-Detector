@@ -19,7 +19,7 @@ class Trainer:
         
         self.logger = logger or logging.getLogger(__name__)
         
-        self.history = {'train_loss': [], 'train_acc': [], 'val_loss': [], 'val_acc': []}
+        self.history = {'train_loss': [], 'train_acc': [], 'val_loss': [], 'val_acc': [], "validation_F1_score": []}
         self.best_val_f1 = 0.0
         
     def _train_epoch(self):
@@ -93,6 +93,7 @@ class Trainer:
             self.history['train_acc'].append(train_acc)
             self.history['val_loss'].append(val_loss)
             self.history['val_acc'].append(val_acc)
+            self.history['validation_F1_score'].append(val_f1)
             
             is_log_epoch = (epoch + 1) % log_interval == 0
             is_first_or_last = (epoch == 0) or (epoch == self.epochs - 1)
@@ -161,4 +162,4 @@ class Evaluator:
         class_report = classification_report(final_labels, final_preds, digits=4)
         self.logger.info(f"\nDetailed Classification Report:\n{class_report}")
         
-        return avg_test_loss, test_acc, macro_f1
+        return avg_test_loss, test_acc, macro_f1, class_report

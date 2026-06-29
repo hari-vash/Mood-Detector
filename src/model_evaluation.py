@@ -5,6 +5,8 @@ import logging
 from pathlib import Path
 import pandas as pd
 from torchvision import transforms
+import mlflow
+import json
 
 from custom_dataset import emotionDataset
 from custom_model import emotionModel
@@ -78,7 +80,25 @@ def main():
         )
         
         # Run the evaluation loop
-        evaluator.evaluate()
+        avg_test_loss, test_acc, macro_f1, class_report = evaluator.evaluate()
+
+        run_info_path = Path("../model/run_info.json")
+        if run_info_path.exists():
+            run_id = json.loads(run_info_path.read_text())["run_id"]
+            with mlflow.start_run(run_id=run_id):
+                mlflow.log_metrics({
+                    "test_loss": avg_test_loss,
+                    "test_acc": test_acc,
+                    "test_f1": macro_f1,
+                    "Classification Report":class_report
+                })
+            logger.debug(f"Logged test metrics to MLflow run {run_id}")
+        else:
+            logger.error(
+                "No run_info.json found next to the model checkpoint — "
+                "test metrics were NOT logged to MLflow. Run model_training.py "
+                "first so a run_id exists to attach this evaluation to."
+            )
         logger.debug("Evaluation Pipeline Completed Successfully.")
         
     except Exception as e:
