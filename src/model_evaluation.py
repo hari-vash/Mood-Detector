@@ -90,8 +90,8 @@ def main():
                     "test_loss": avg_test_loss,
                     "test_acc": test_acc,
                     "test_f1": macro_f1,
-                    "Classification Report":class_report
                 })
+                mlflow.log_text(class_report, "classification_report.txt")
             logger.debug(f"Logged test metrics to MLflow run {run_id}")
         else:
             logger.error(
