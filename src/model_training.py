@@ -42,13 +42,17 @@ def main():
         params = {"batch_size":32,"epochs":67,"learning_rate":0.001,"weight_decay":1e-3}
         
         # 2. Load Data
-        data_dir = Path("../data/processed")
+        data_dir = Path("data/processed")
         train_dataframe = pd.read_pickle(data_dir / "train.pkl")
         validation_dataframe = pd.read_pickle(data_dir / "validation.pkl")
         logger.debug("Loaded Processed Dataframes")
         
         # 3. Compute Mean/Std
         train_mean, train_std = mean_std_calculator(train_dataframe)
+        normalization_stats = {
+            "Mean" : train_mean,
+            "Standard Deviation": train_std
+        }
         logger.debug(f"Training Mean: {train_mean:.4f}, Std: {train_std:.4f}")
         
         # 4. Define Transforms
@@ -97,8 +101,6 @@ def main():
                 "num_classes":num_classes,
                 "architecture":"emotionModel (residual CNN)"
             })
-
-
             
             # 9. Train
             trainer = Trainer(
@@ -109,8 +111,7 @@ def main():
                 train_dataloader=train_dataloader,
                 validation_dataloader=validation_dataloader,
                 device=device,
-                params=params,
-                save_dir="../model",
+                save_dir="model",
                 logger=logger
             )
 
@@ -129,14 +130,22 @@ def main():
                 )
                 mlflow.log_metric("Best Validation F1 Score",trainer.best_val_f1)
                 
-                best_model_path = Path("../model/best_emotion_model.pth")
-                if best_model_path.exists():
-                    mlflow.log_artifact(str(best_model_path),artifact_path="model")
+            best_model_path = Path("model/best_emotion_model.pth")
+            if best_model_path.exists():
+                mlflow.log_artifact(str(best_model_path),artifact_path="model")
                 
-                run_info_path = Path("../model/run_info.json")
-                run_info_path.write_text(json.dumps({"run_id": run.info.run_id}))
-                logger.debug(f"Saved MLflow run_id to {run_info_path}")
+            run_info_path = Path("model/run_info.json")
+            run_info_path.write_text(json.dumps({"run_id": run.info.run_id}))
+            logger.debug(f"Saved MLflow run_id to {run_info_path}")
 
+            normalization_stats_path = Path("model/normalization_stats.json")
+            normalization_stats_path.write_text(json.dumps(normalization_stats))
+            logger.debug(f"Saved Normalization Stats to {normalization_stats_path}")
+                
+            class_weights_path = Path("model/class_weights_stats.json")
+            class_weights_path.write_text(json.dumps(class_weights))
+            logger.debug(f"Saved Class weights stats to {class_weights_path}")
+                
         logger.debug("Training Pipeline Completed Successfully.")
         
     except Exception as e:

@@ -11,7 +11,6 @@ import json
 from custom_dataset import emotionDataset
 from custom_model import emotionModel
 from engine import Evaluator
-from utils import mean_std_calculator, calculate_weights
 
 log_dir = Path("logs")
 log_dir.mkdir(parents=True, exist_ok=True)
@@ -39,15 +38,15 @@ def main():
     try:
         logger.debug("Initializing Model Evaluation Pipeline...")
         
-        data_dir = Path("../data/processed")
+        data_dir = Path("data/processed")
         test_dataframe = pd.read_pickle(data_dir / "test.pkl")
         
-        train_dataframe = pd.read_pickle(data_dir / "train.pkl")
-        train_mean, train_std = mean_std_calculator(train_dataframe)
+        with open("model/normalization_stats.json") as file:
+            data = json.load(file)
         
         transform = transforms.Compose([
             transforms.ToTensor(),
-            transforms.Normalize(mean=[train_mean], std=[train_std])
+            transforms.Normalize(mean=[data["Mean"]], std=[data["Standard Deviation"]])
         ])
         
         test_dataset = emotionDataset(test_dataframe, transform=transform)
@@ -57,13 +56,12 @@ def main():
         logger.debug(f"Evaluating on device: {device}")
         
         num_classes = 3
-        total_train_samples = len(train_dataframe)
-        train_samples_in_class = train_dataframe["emotion"].value_counts().sort_index().values
-            
-        class_weights = calculate_weights(total_train_samples, train_samples_in_class, num_classes)
-        class_weights_tensor = torch.tensor(class_weights, dtype=torch.float32).to(device)
+
+        with open("model/class_weights_stats.json", "r") as file2:
+            data2 = json.load(file2)
+        class_weights_tensor = torch.tensor(data2, dtype=torch.float32).to(device)
         
-        model_path = Path("../model/best_emotion_model.pth")
+        model_path = Path("model/best_emotion_model.pth")
         best_model = emotionModel(num_classes=num_classes)
         
         best_model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
@@ -82,7 +80,7 @@ def main():
         # Run the evaluation loop
         avg_test_loss, test_acc, macro_f1, class_report = evaluator.evaluate()
 
-        run_info_path = Path("../model/run_info.json")
+        run_info_path = Path("model/run_info.json")
         if run_info_path.exists():
             run_id = json.loads(run_info_path.read_text())["run_id"]
             with mlflow.start_run(run_id=run_id):
