@@ -83,6 +83,10 @@ def main():
         run_info_path = Path("model/run_info.json")
         if run_info_path.exists():
             run_id = json.loads(run_info_path.read_text())["run_id"]
+            
+            PROJECT_ROOT = Path(__file__).resolve().parent.parent
+            mlflow.set_tracking_uri(f"sqlite:///{PROJECT_ROOT}/mlflow.db")
+            
             with mlflow.start_run(run_id=run_id):
                 mlflow.log_metrics({
                     "test_loss": avg_test_loss,

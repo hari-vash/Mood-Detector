@@ -2,3 +2,5 @@ data
 .venv
 model
 __pycache__
+mlflow.db
+mlruns

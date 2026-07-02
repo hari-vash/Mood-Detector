@@ -89,6 +89,8 @@ def main():
         optimizer = torch.optim.Adam(model.parameters(), lr=params["learning_rate"], weight_decay=params["weight_decay"])
         logger.debug("Model, Optimizer, and Loss Function initialized")
         
+        PROJECT_ROOT = Path(__file__).resolve().parent.parent
+        mlflow.set_tracking_uri(f"sqlite:///{PROJECT_ROOT}/mlflow.db")
         mlflow.set_experiment("mood-detector")
         with mlflow.start_run() as run:
             
