@@ -1,0 +1,131 @@
+2026-07-01 14:14:08,652 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 14:14:08,653 - model_evaluation - ERROR - Evaluation Pipeline failed: [Errno 2] No such file or directory: '..\\data\\processed\\test.pkl'
+Traceback (most recent call last):
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\src\model_evaluation.py", line 43, in main
+    test_dataframe = pd.read_pickle(data_dir / "test.pkl")
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\pandas\io\pickle.py", line 185, in read_pickle
+    with get_handle(
+         ~~~~~~~~~~^
+        filepath_or_buffer,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as handles:
+    ^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '..\\data\\processed\\test.pkl'
+2026-07-01 14:15:26,802 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 14:15:26,803 - model_evaluation - ERROR - Evaluation Pipeline failed: [Errno 2] No such file or directory: '..\\data\\processed\\test.pkl'
+Traceback (most recent call last):
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\src\model_evaluation.py", line 43, in main
+    test_dataframe = pd.read_pickle(data_dir / "test.pkl")
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\pandas\io\pickle.py", line 185, in read_pickle
+    with get_handle(
+         ~~~~~~~~~~^
+        filepath_or_buffer,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as handles:
+    ^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '..\\data\\processed\\test.pkl'
+2026-07-01 14:15:51,850 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 14:15:53,447 - model_evaluation - DEBUG - Evaluating on device: cuda
+2026-07-01 14:15:53,802 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
+2026-07-01 14:15:53,807 - model_evaluation - INFO - Evaluating Model on the unseen test data...
+2026-07-01 14:15:55,917 - model_evaluation - INFO - Test Results | Loss: 0.6108 | Accuracy: 76.59% | Macro F1: 0.7427
+2026-07-01 14:15:55,922 - model_evaluation - INFO - 
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6517    0.6533    0.6525       799
+           1     0.8923    0.8614    0.8766      1443
+           2     0.6824    0.7164    0.6990       966
+
+    accuracy                         0.7659      3208
+   macro avg     0.7421    0.7437    0.7427      3208
+weighted avg     0.7692    0.7659    0.7673      3208
+
+2026-07-01 14:15:55,923 - model_evaluation - ERROR - No run_info.json found next to the model checkpoint — test metrics were NOT logged to MLflow. Run model_training.py first so a run_id exists to attach this evaluation to.
+2026-07-01 14:15:55,923 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.
+2026-07-01 14:35:38,848 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 14:35:40,216 - model_evaluation - DEBUG - Evaluating on device: cuda
+2026-07-01 14:35:40,345 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
+2026-07-01 14:35:40,349 - model_evaluation - INFO - Evaluating Model on the unseen test data...
+2026-07-01 14:35:41,729 - model_evaluation - INFO - Test Results | Loss: 0.6179 | Accuracy: 77.93% | Macro F1: 0.7547
+2026-07-01 14:35:41,734 - model_evaluation - INFO - 
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6805    0.6370    0.6580       799
+           1     0.8950    0.8801    0.8875      1443
+           2     0.6926    0.7464    0.7185       966
+
+    accuracy                         0.7793      3208
+   macro avg     0.7560    0.7545    0.7547      3208
+weighted avg     0.7806    0.7793    0.7795      3208
+
+2026-07-01 14:35:41,735 - model_evaluation - ERROR - No run_info.json found next to the model checkpoint — test metrics were NOT logged to MLflow. Run model_training.py first so a run_id exists to attach this evaluation to.
+2026-07-01 14:35:41,735 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.
+2026-07-01 14:38:10,692 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 14:38:12,076 - model_evaluation - DEBUG - Evaluating on device: cuda
+2026-07-01 14:38:12,174 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
+2026-07-01 14:38:12,179 - model_evaluation - INFO - Evaluating Model on the unseen test data...
+2026-07-01 14:38:13,501 - model_evaluation - INFO - Test Results | Loss: 0.6179 | Accuracy: 77.93% | Macro F1: 0.7547
+2026-07-01 14:38:13,506 - model_evaluation - INFO - 
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6805    0.6370    0.6580       799
+           1     0.8950    0.8801    0.8875      1443
+           2     0.6926    0.7464    0.7185       966
+
+    accuracy                         0.7793      3208
+   macro avg     0.7560    0.7545    0.7547      3208
+weighted avg     0.7806    0.7793    0.7795      3208
+
+2026-07-01 14:38:14,240 - model_evaluation - DEBUG - Logged test metrics to MLflow run 1280e091175242d7a3aba153ddcd788c
+2026-07-01 14:38:14,240 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.
+2026-07-01 15:31:30,844 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 15:31:32,353 - model_evaluation - DEBUG - Evaluating on device: cuda
+2026-07-01 15:31:32,465 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
+2026-07-01 15:31:32,469 - model_evaluation - INFO - Evaluating Model on the unseen test data...
+2026-07-01 15:31:33,801 - model_evaluation - INFO - Test Results | Loss: 0.6179 | Accuracy: 77.93% | Macro F1: 0.7547
+2026-07-01 15:31:33,807 - model_evaluation - INFO - 
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.6805    0.6370    0.6580       799
+           1     0.8950    0.8801    0.8875      1443
+           2     0.6926    0.7464    0.7185       966
+
+    accuracy                         0.7793      3208
+   macro avg     0.7560    0.7545    0.7547      3208
+weighted avg     0.7806    0.7793    0.7795      3208
+
+2026-07-01 15:31:34,767 - model_evaluation - DEBUG - Logged test metrics to MLflow run 1280e091175242d7a3aba153ddcd788c
+2026-07-01 15:31:34,767 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.
+2026-07-01 16:35:06,147 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-01 16:35:07,249 - model_evaluation - DEBUG - Evaluating on device: cuda
+2026-07-01 16:35:07,387 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
+2026-07-01 16:35:07,389 - model_evaluation - INFO - Evaluating Model on the unseen test data...
+2026-07-01 16:35:08,747 - model_evaluation - INFO - Test Results | Loss: 0.6307 | Accuracy: 76.40% | Macro F1: 0.7427
+2026-07-01 16:35:08,752 - model_evaluation - INFO - 
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.7147    0.5895    0.6461       799
+           1     0.9382    0.8205    0.8754      1443
+           2     0.6185    0.8240    0.7066       966
+
+    accuracy                         0.7640      3208
+   macro avg     0.7571    0.7447    0.7427      3208
+weighted avg     0.7863    0.7640    0.7675      3208
+
+2026-07-01 16:35:09,851 - model_evaluation - DEBUG - Logged test metrics to MLflow run f4e83520d99046cc8f7e3dd41803c6d0
+2026-07-01 16:35:09,851 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.

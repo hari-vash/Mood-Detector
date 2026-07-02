@@ -1,0 +1,425 @@
+2026-07-01 14:17:32,624 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-01 14:17:32,625 - model_training - ERROR - Pipeline failed: [Errno 2] No such file or directory: '..\\data\\processed\\train.pkl'
+Traceback (most recent call last):
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\src\model_training.py", line 46, in main
+    train_dataframe = pd.read_pickle(data_dir / "train.pkl")
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\pandas\io\pickle.py", line 185, in read_pickle
+    with get_handle(
+         ~~~~~~~~~~^
+        filepath_or_buffer,
+        ^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as handles:
+    ^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\pandas\io\common.py", line 882, in get_handle
+    handle = open(handle, ioargs.mode)
+FileNotFoundError: [Errno 2] No such file or directory: '..\\data\\processed\\train.pkl'
+2026-07-01 14:18:51,445 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-01 14:18:51,720 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-01 14:18:51,890 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-01 14:18:51,891 - model_training - DEBUG - Transformations Defined
+2026-07-01 14:18:51,892 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-01 14:18:52,910 - model_training - INFO - Using device: cuda
+2026-07-01 14:18:53,014 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-01 14:18:53,022 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-01 14:19:05,209 - model_training - ERROR - Pipeline failed: Trainer.__init__() got an unexpected keyword argument 'params'
+Traceback (most recent call last):
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\src\model_training.py", line 104, in main
+    trainer = Trainer(
+        epochs=params["epochs"],
+    ...<8 lines>...
+        logger=logger
+    )
+TypeError: Trainer.__init__() got an unexpected keyword argument 'params'
+2026-07-01 14:21:08,721 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-01 14:21:08,943 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-01 14:21:09,091 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-01 14:21:09,091 - model_training - DEBUG - Transformations Defined
+2026-07-01 14:21:09,092 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-01 14:21:10,071 - model_training - INFO - Using device: cuda
+2026-07-01 14:21:10,163 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-01 14:21:10,171 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-01 14:21:11,471 - model_training - INFO - Starting training loop...
+2026-07-01 14:21:20,327 - model_training - INFO - Epoch [1/67] | Train Loss: 1.0932 | Val Loss: 1.1157 | Val Acc: 30.11% | Val F1: 0.1562
+2026-07-01 14:21:54,765 - model_training - INFO - Epoch [5/67] | Train Loss: 0.7393 | Val Loss: 0.9357 | Val Acc: 52.05% | Val F1: 0.4044
+2026-07-01 14:22:39,323 - model_training - INFO - Epoch [10/67] | Train Loss: 0.6142 | Val Loss: 0.8167 | Val Acc: 65.52% | Val F1: 0.5536
+2026-07-01 14:23:24,262 - model_training - INFO - Epoch [15/67] | Train Loss: 0.5460 | Val Loss: 0.7205 | Val Acc: 69.69% | Val F1: 0.6658
+2026-07-01 14:24:23,457 - model_training - INFO - Epoch [20/67] | Train Loss: 0.4954 | Val Loss: 0.7165 | Val Acc: 69.58% | Val F1: 0.6198
+2026-07-01 14:25:19,594 - model_training - INFO - Epoch [25/67] | Train Loss: 0.4587 | Val Loss: 0.6536 | Val Acc: 75.77% | Val F1: 0.7299
+2026-07-01 14:26:13,247 - model_training - INFO - Epoch [30/67] | Train Loss: 0.4156 | Val Loss: 0.6499 | Val Acc: 74.09% | Val F1: 0.7187
+2026-07-01 14:27:04,810 - model_training - INFO - Epoch [35/67] | Train Loss: 0.3971 | Val Loss: 0.6666 | Val Acc: 76.08% | Val F1: 0.7169
+2026-07-01 14:27:58,760 - model_training - INFO - Epoch [40/67] | Train Loss: 0.3661 | Val Loss: 0.6064 | Val Acc: 75.69% | Val F1: 0.7349
+2026-07-01 14:28:54,065 - model_training - INFO - Epoch [45/67] | Train Loss: 0.3459 | Val Loss: 0.7720 | Val Acc: 72.65% | Val F1: 0.6421
+2026-07-01 14:29:47,972 - model_training - INFO - Epoch [50/67] | Train Loss: 0.3237 | Val Loss: 0.6219 | Val Acc: 77.13% | Val F1: 0.7397
+2026-07-01 14:30:44,093 - model_training - INFO - Epoch [55/67] | Train Loss: 0.3155 | Val Loss: 0.6636 | Val Acc: 74.52% | Val F1: 0.7074
+2026-07-01 14:31:36,937 - model_training - INFO - Epoch [60/67] | Train Loss: 0.3018 | Val Loss: 0.6492 | Val Acc: 75.34% | Val F1: 0.7360
+2026-07-01 14:32:31,299 - model_training - INFO - Epoch [65/67] | Train Loss: 0.2779 | Val Loss: 0.6259 | Val Acc: 74.44% | Val F1: 0.7317
+2026-07-01 14:32:52,497 - model_training - INFO - Epoch [67/67] | Train Loss: 0.2939 | Val Loss: 0.6394 | Val Acc: 75.03% | Val F1: 0.7348
+2026-07-01 14:32:52,497 - model_training - INFO - Training complete.
+2026-07-01 14:32:52,560 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,600 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,644 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,693 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,752 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,814 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,885 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:52,968 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,039 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,118 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,207 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,269 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,331 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,499 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,546 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,595 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,642 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,687 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,741 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,807 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,883 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,949 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:53,997 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,040 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,079 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,148 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,202 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,250 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,295 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,341 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,396 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,439 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,486 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,529 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,572 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,616 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,659 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,700 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,744 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,795 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,838 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,882 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,919 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,952 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:54,984 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,012 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,044 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,089 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,138 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,184 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,220 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,258 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,294 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,327 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,373 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,427 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,473 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,507 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,540 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,572 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,606 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,645 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,699 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,749 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,790 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,825 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,858 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 14:32:55,870 - model_training - DEBUG - Training Pipeline Completed Successfully.
+2026-07-01 16:11:12,371 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-01 16:11:12,790 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-01 16:11:13,045 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-01 16:11:13,045 - model_training - DEBUG - Transformations Defined
+2026-07-01 16:11:13,047 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-01 16:11:14,075 - model_training - INFO - Using device: cuda
+2026-07-01 16:11:14,193 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-01 16:11:14,203 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-01 16:11:16,031 - model_training - INFO - Starting training loop...
+2026-07-01 16:11:27,853 - model_training - INFO - Epoch [1/67] | Train Loss: 1.1079 | Val Loss: 1.1322 | Val Acc: 45.81% | Val F1: 0.2623
+2026-07-01 16:12:21,231 - model_training - INFO - Epoch [5/67] | Train Loss: 0.7510 | Val Loss: 0.8188 | Val Acc: 65.29% | Val F1: 0.5788
+2026-07-01 16:13:26,500 - model_training - INFO - Epoch [10/67] | Train Loss: 0.6281 | Val Loss: 0.7773 | Val Acc: 64.94% | Val F1: 0.6181
+2026-07-01 16:14:31,816 - model_training - INFO - Epoch [15/67] | Train Loss: 0.5460 | Val Loss: 0.7441 | Val Acc: 70.90% | Val F1: 0.6132
+2026-07-01 16:22:27,264 - model_training - INFO - Epoch [20/67] | Train Loss: 0.4926 | Val Loss: 0.6651 | Val Acc: 71.56% | Val F1: 0.6929
+2026-07-01 16:23:09,951 - model_training - INFO - Epoch [25/67] | Train Loss: 0.4506 | Val Loss: 0.6624 | Val Acc: 74.76% | Val F1: 0.7003
+2026-07-01 16:23:52,217 - model_training - INFO - Epoch [30/67] | Train Loss: 0.4151 | Val Loss: 0.6216 | Val Acc: 76.82% | Val F1: 0.7407
+2026-07-01 16:24:35,532 - model_training - INFO - Epoch [35/67] | Train Loss: 0.3858 | Val Loss: 0.5980 | Val Acc: 76.00% | Val F1: 0.7322
+2026-07-01 16:25:20,105 - model_training - INFO - Epoch [40/67] | Train Loss: 0.3651 | Val Loss: 0.6713 | Val Acc: 73.82% | Val F1: 0.6998
+2026-07-01 16:26:05,369 - model_training - INFO - Epoch [45/67] | Train Loss: 0.3390 | Val Loss: 0.6736 | Val Acc: 69.65% | Val F1: 0.6860
+2026-07-01 16:26:52,436 - model_training - INFO - Epoch [50/67] | Train Loss: 0.3286 | Val Loss: 0.6436 | Val Acc: 74.80% | Val F1: 0.6991
+2026-07-01 16:27:49,693 - model_training - INFO - Epoch [55/67] | Train Loss: 0.3012 | Val Loss: 0.6083 | Val Acc: 74.91% | Val F1: 0.7248
+2026-07-01 16:28:37,603 - model_training - INFO - Epoch [60/67] | Train Loss: 0.2958 | Val Loss: 0.6723 | Val Acc: 73.86% | Val F1: 0.6785
+2026-07-01 16:29:26,615 - model_training - INFO - Epoch [65/67] | Train Loss: 0.2868 | Val Loss: 0.6376 | Val Acc: 76.39% | Val F1: 0.7273
+2026-07-01 16:29:46,659 - model_training - INFO - Epoch [67/67] | Train Loss: 0.2854 | Val Loss: 0.6007 | Val Acc: 75.77% | Val F1: 0.7344
+2026-07-01 16:29:46,660 - model_training - INFO - Training complete.
+2026-07-01 16:29:46,725 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,727 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,728 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,770 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,772 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,773 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,809 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,810 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,812 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,845 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,846 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,848 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,877 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,878 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,879 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,908 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,909 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,910 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,941 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,942 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,943 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:46,977 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:46,978 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:46,979 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,019 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,021 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,022 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,074 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,076 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,078 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,129 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,131 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,133 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,176 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,178 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,180 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,225 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,226 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,228 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,276 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,278 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,280 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,340 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,342 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,344 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,447 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,468 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,474 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,593 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,595 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,598 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,655 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,657 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,659 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,721 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,723 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,725 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,806 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,809 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,811 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,887 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,889 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,891 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:47,961 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:47,963 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:47,966 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,033 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,035 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,037 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,091 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,093 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,095 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,234 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,236 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,238 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,288 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,289 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,291 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,333 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,335 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,336 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,379 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,381 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,383 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,433 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,435 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,437 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,484 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,486 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,488 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,547 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,549 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,551 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,613 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,615 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,617 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,673 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,675 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,676 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,726 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,728 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,730 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,797 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,799 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,801 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,854 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,856 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,857 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,910 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,912 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,914 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:48,962 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:48,964 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:48,965 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,006 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,007 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,008 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,055 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,056 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,058 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,105 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,107 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,108 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,173 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,175 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,177 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,242 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,244 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,246 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,308 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,310 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,312 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,373 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,376 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,378 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,424 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,425 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,426 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,463 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,464 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,466 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,504 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,505 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,507 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,551 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,552 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,554 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,602 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,603 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,605 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,654 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,656 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,658 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,706 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,708 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,710 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,758 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,760 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,762 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,810 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,811 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,813 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,864 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,866 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,868 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,913 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,914 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,916 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:49,958 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:49,960 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:49,961 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,000 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,002 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,003 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,050 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,052 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,054 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,108 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,109 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,111 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,160 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,162 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,163 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,217 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,218 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,220 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,263 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,264 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,266 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,304 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,306 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,307 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,355 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,356 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,358 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,411 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,413 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,415 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,460 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 16:29:50,462 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 16:29:50,463 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 16:29:50,482 - model_training - DEBUG - Training Pipeline Completed Successfully.
+2026-07-01 22:32:09,374 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-01 22:32:10,131 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-01 22:32:10,428 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-01 22:32:10,429 - model_training - DEBUG - Transformations Defined
+2026-07-01 22:32:10,430 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-01 22:32:11,494 - model_training - INFO - Using device: cuda
+2026-07-01 22:32:11,845 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-01 22:32:11,884 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-01 22:32:11,884 - model_training - ERROR - Pipeline failed:  Model registry functionality is unavailable; got unsupported URI 'C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\mlruns' for model registry data storage. Supported URI schemes are: ['', 'file', 'databricks', 'databricks-uc', 'uc', 'http', 'https', 'postgresql', 'mysql', 'sqlite', 'mssql']. See https://www.mlflow.org/docs/latest/tracking.html#storage for how to run an MLflow server against one of the supported backend storage locations.
+Traceback (most recent call last):
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\registry.py", line 81, in get_store_builder
+    store_builder = self._registry[scheme]
+                    ~~~~~~~~~~~~~~^^^^^^^^
+KeyError: 'c'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\src\model_training.py", line 93, in main
+    mlflow.set_experiment("mood-detector")
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\fluent.py", line 203, in set_experiment
+    client = TrackingServiceClient(_resolve_tracking_uri())
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\_tracking_service\client.py", line 98, in __init__
+    self.store
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\_tracking_service\client.py", line 102, in store
+    return utils._get_store(self.tracking_uri)
+           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\_tracking_service\utils.py", line 270, in _get_store
+    return _tracking_store_registry.get_store(store_uri, artifact_uri)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\_tracking_service\registry.py", line 45, in get_store
+    return self._get_store_with_resolved_uri(resolved_store_uri, artifact_uri)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\_tracking_service\registry.py", line 55, in _get_store_with_resolved_uri
+    builder = self.get_store_builder(resolved_store_uri)
+  File "C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\.venv\Lib\site-packages\mlflow\tracking\registry.py", line 83, in get_store_builder
+    raise UnsupportedModelRegistryStoreURIException(
+        unsupported_uri=store_uri, supported_uri_schemes=list(self._registry.keys())
+    )
+mlflow.tracking.registry.UnsupportedModelRegistryStoreURIException:  Model registry functionality is unavailable; got unsupported URI 'C:\Users\haria\OneDrive\Desktop\My Folder\on_going_projects\Mood-Detector\mlruns' for model registry data storage. Supported URI schemes are: ['', 'file', 'databricks', 'databricks-uc', 'uc', 'http', 'https', 'postgresql', 'mysql', 'sqlite', 'mssql']. See https://www.mlflow.org/docs/latest/tracking.html#storage for how to run an MLflow server against one of the supported backend storage locations.
+2026-07-01 22:37:50,623 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-01 22:37:51,020 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-01 22:37:51,315 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-01 22:37:51,315 - model_training - DEBUG - Transformations Defined
+2026-07-01 22:37:51,317 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-01 22:37:52,385 - model_training - INFO - Using device: cuda
+2026-07-01 22:37:52,524 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-01 22:37:52,541 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-01 22:37:55,402 - model_training - INFO - Starting training loop...
+2026-07-01 22:38:10,884 - model_training - INFO - Epoch [1/67] | Train Loss: 1.1166 | Val Loss: 1.1070 | Val Acc: 30.89% | Val F1: 0.1711
+2026-07-01 22:39:23,322 - model_training - INFO - Epoch [5/67] | Train Loss: 0.8194 | Val Loss: 0.9148 | Val Acc: 58.55% | Val F1: 0.5340
+2026-07-01 22:40:43,666 - model_training - INFO - Epoch [10/67] | Train Loss: 0.6319 | Val Loss: 0.8019 | Val Acc: 65.87% | Val F1: 0.5500
+2026-07-01 22:42:06,721 - model_training - INFO - Epoch [15/67] | Train Loss: 0.5468 | Val Loss: 0.7516 | Val Acc: 71.76% | Val F1: 0.6373
+2026-07-01 22:43:32,032 - model_training - INFO - Epoch [20/67] | Train Loss: 0.4805 | Val Loss: 0.7127 | Val Acc: 68.48% | Val F1: 0.6537
+2026-07-01 22:44:21,809 - model_training - INFO - Epoch [25/67] | Train Loss: 0.4456 | Val Loss: 0.6770 | Val Acc: 72.93% | Val F1: 0.6738
+2026-07-01 22:45:05,469 - model_training - INFO - Epoch [30/67] | Train Loss: 0.4156 | Val Loss: 0.6969 | Val Acc: 72.07% | Val F1: 0.6715
+2026-07-01 22:45:50,753 - model_training - INFO - Epoch [35/67] | Train Loss: 0.3800 | Val Loss: 0.6472 | Val Acc: 73.24% | Val F1: 0.7091
+2026-07-01 22:46:36,953 - model_training - INFO - Epoch [40/67] | Train Loss: 0.3553 | Val Loss: 0.6226 | Val Acc: 75.42% | Val F1: 0.7251
+2026-07-01 22:47:24,080 - model_training - INFO - Epoch [45/67] | Train Loss: 0.3336 | Val Loss: 0.6316 | Val Acc: 73.70% | Val F1: 0.7120
+2026-07-01 22:48:13,960 - model_training - INFO - Epoch [50/67] | Train Loss: 0.3048 | Val Loss: 0.6689 | Val Acc: 75.96% | Val F1: 0.7196
+2026-07-01 22:49:02,452 - model_training - INFO - Epoch [55/67] | Train Loss: 0.3089 | Val Loss: 0.6847 | Val Acc: 74.60% | Val F1: 0.6921
+2026-07-01 22:49:55,171 - model_training - INFO - Epoch [60/67] | Train Loss: 0.2915 | Val Loss: 0.5973 | Val Acc: 77.41% | Val F1: 0.7523
+2026-07-01 22:50:43,411 - model_training - INFO - Epoch [65/67] | Train Loss: 0.2815 | Val Loss: 0.6442 | Val Acc: 74.83% | Val F1: 0.7218
+2026-07-01 22:51:03,493 - model_training - INFO - Epoch [67/67] | Train Loss: 0.2867 | Val Loss: 0.6177 | Val Acc: 77.05% | Val F1: 0.7431
+2026-07-01 22:51:03,493 - model_training - INFO - Training complete.
+2026-07-01 22:51:05,312 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-01 22:51:05,313 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-01 22:51:05,314 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-01 22:51:05,328 - model_training - DEBUG - Training Pipeline Completed Successfully.
