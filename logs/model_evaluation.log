@@ -1,19 +1,19 @@
-2026-07-02 16:44:14,182 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
-2026-07-02 16:44:15,298 - model_evaluation - DEBUG - Evaluating on device: cuda
-2026-07-02 16:44:15,439 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
-2026-07-02 16:44:15,441 - model_evaluation - INFO - Evaluating Model on the unseen test data...
-2026-07-02 16:44:16,861 - model_evaluation - INFO - Test Results | Loss: 0.5954 | Accuracy: 78.09% | Macro F1: 0.7582
-2026-07-02 16:44:16,866 - model_evaluation - INFO - 
+2026-07-02 17:38:14,945 - model_evaluation - DEBUG - Initializing Model Evaluation Pipeline...
+2026-07-02 17:38:16,115 - model_evaluation - DEBUG - Evaluating on device: cuda
+2026-07-02 17:38:16,292 - model_evaluation - DEBUG - Loaded model weights from model\best_emotion_model.pth
+2026-07-02 17:38:16,298 - model_evaluation - INFO - Evaluating Model on the unseen test data...
+2026-07-02 17:38:18,500 - model_evaluation - INFO - Test Results | Loss: 0.6119 | Accuracy: 77.37% | Macro F1: 0.7485
+2026-07-02 17:38:18,508 - model_evaluation - INFO - 
 Detailed Classification Report:
               precision    recall  f1-score   support
 
-           0     0.6861    0.6483    0.6667       799
-           1     0.9177    0.8656    0.8909      1443
-           2     0.6758    0.7640    0.7172       966
+           0     0.7090    0.5945    0.6467       799
+           1     0.8961    0.8663    0.8809      1443
+           2     0.6623    0.7836    0.7179       966
 
-    accuracy                         0.7809      3208
-   macro avg     0.7599    0.7593    0.7582      3208
-weighted avg     0.7872    0.7809    0.7827      3208
+    accuracy                         0.7737      3208
+   macro avg     0.7558    0.7481    0.7485      3208
+weighted avg     0.7791    0.7737    0.7735      3208
 
-2026-07-02 16:44:18,006 - model_evaluation - DEBUG - Logged test metrics to MLflow run 3acca3b643c142e8bf5d3569b3d7d554
-2026-07-02 16:44:18,007 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.
+2026-07-02 17:38:20,559 - model_evaluation - DEBUG - Logged test metrics to MLflow run 6dde512042f9448abb438d86e133ac18
+2026-07-02 17:38:20,559 - model_evaluation - DEBUG - Evaluation Pipeline Completed Successfully.

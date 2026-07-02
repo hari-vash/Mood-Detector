@@ -1,29 +1,29 @@
-2026-07-02 15:57:07,043 - model_training - DEBUG - Initializing Model Training Pipeline...
-2026-07-02 15:57:07,365 - model_training - DEBUG - Loaded Processed Dataframes
-2026-07-02 15:57:07,528 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
-2026-07-02 15:57:07,528 - model_training - DEBUG - Transformations Defined
-2026-07-02 15:57:07,529 - model_training - DEBUG - DataLoaders Successfully Created
-2026-07-02 15:57:08,563 - model_training - INFO - Using device: cuda
-2026-07-02 15:57:08,650 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
-2026-07-02 15:57:08,669 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
-2026-07-02 15:57:10,544 - model_training - INFO - Starting training loop...
-2026-07-02 15:57:19,377 - model_training - INFO - Epoch [1/67] | Train Loss: 1.0932 | Val Loss: 1.0868 | Val Acc: 46.01% | Val F1: 0.3501
-2026-07-02 15:57:54,328 - model_training - INFO - Epoch [5/67] | Train Loss: 0.7380 | Val Loss: 1.1125 | Val Acc: 44.64% | Val F1: 0.3364
-2026-07-02 15:58:43,873 - model_training - INFO - Epoch [10/67] | Train Loss: 0.6157 | Val Loss: 0.7814 | Val Acc: 67.12% | Val F1: 0.5799
-2026-07-02 15:59:28,434 - model_training - INFO - Epoch [15/67] | Train Loss: 0.5397 | Val Loss: 0.7269 | Val Acc: 67.63% | Val F1: 0.6326
-2026-07-02 16:00:14,706 - model_training - INFO - Epoch [20/67] | Train Loss: 0.4833 | Val Loss: 0.7244 | Val Acc: 69.26% | Val F1: 0.6731
-2026-07-02 16:01:02,797 - model_training - INFO - Epoch [25/67] | Train Loss: 0.4512 | Val Loss: 0.7394 | Val Acc: 67.63% | Val F1: 0.6490
-2026-07-02 16:01:51,960 - model_training - INFO - Epoch [30/67] | Train Loss: 0.4152 | Val Loss: 0.6205 | Val Acc: 76.35% | Val F1: 0.7329
-2026-07-02 16:02:41,549 - model_training - INFO - Epoch [35/67] | Train Loss: 0.3935 | Val Loss: 0.6559 | Val Acc: 74.09% | Val F1: 0.7002
-2026-07-02 16:04:14,912 - model_training - INFO - Epoch [40/67] | Train Loss: 0.3591 | Val Loss: 0.7299 | Val Acc: 71.80% | Val F1: 0.6636
-2026-07-02 16:05:25,987 - model_training - INFO - Epoch [45/67] | Train Loss: 0.3335 | Val Loss: 0.6297 | Val Acc: 74.25% | Val F1: 0.7258
-2026-07-02 16:06:32,603 - model_training - INFO - Epoch [50/67] | Train Loss: 0.3299 | Val Loss: 0.7177 | Val Acc: 72.69% | Val F1: 0.6792
-2026-07-02 16:07:31,487 - model_training - INFO - Epoch [55/67] | Train Loss: 0.3168 | Val Loss: 0.6326 | Val Acc: 73.35% | Val F1: 0.7141
-2026-07-02 16:08:25,665 - model_training - INFO - Epoch [60/67] | Train Loss: 0.3066 | Val Loss: 0.6706 | Val Acc: 74.29% | Val F1: 0.7076
-2026-07-02 16:09:14,286 - model_training - INFO - Epoch [65/67] | Train Loss: 0.2989 | Val Loss: 0.6306 | Val Acc: 76.82% | Val F1: 0.7402
-2026-07-02 16:09:34,078 - model_training - INFO - Epoch [67/67] | Train Loss: 0.2979 | Val Loss: 0.6471 | Val Acc: 75.65% | Val F1: 0.7177
-2026-07-02 16:09:34,079 - model_training - INFO - Training complete.
-2026-07-02 16:09:35,939 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
-2026-07-02 16:09:35,941 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
-2026-07-02 16:09:35,942 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
-2026-07-02 16:09:35,953 - model_training - DEBUG - Training Pipeline Completed Successfully.
+2026-07-02 17:23:55,707 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-02 17:23:56,045 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-02 17:23:56,205 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-02 17:23:56,207 - model_training - DEBUG - Transformations Defined
+2026-07-02 17:23:56,209 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-02 17:23:57,250 - model_training - INFO - Using device: cuda
+2026-07-02 17:23:57,337 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-02 17:23:57,358 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-02 17:24:00,175 - model_training - INFO - Starting training loop...
+2026-07-02 17:24:09,086 - model_training - INFO - Epoch [1/67] | Train Loss: 1.1059 | Val Loss: 1.0934 | Val Acc: 45.58% | Val F1: 0.3229
+2026-07-02 17:24:43,980 - model_training - INFO - Epoch [5/67] | Train Loss: 0.7770 | Val Loss: 0.9713 | Val Acc: 50.21% | Val F1: 0.3886
+2026-07-02 17:25:29,796 - model_training - INFO - Epoch [10/67] | Train Loss: 0.6310 | Val Loss: 0.8491 | Val Acc: 62.25% | Val F1: 0.5958
+2026-07-02 17:26:16,425 - model_training - INFO - Epoch [15/67] | Train Loss: 0.5429 | Val Loss: 0.7708 | Val Acc: 66.07% | Val F1: 0.5828
+2026-07-02 17:27:03,282 - model_training - INFO - Epoch [20/67] | Train Loss: 0.4856 | Val Loss: 0.6966 | Val Acc: 71.91% | Val F1: 0.6914
+2026-07-02 17:27:53,026 - model_training - INFO - Epoch [25/67] | Train Loss: 0.4413 | Val Loss: 0.6238 | Val Acc: 76.35% | Val F1: 0.7367
+2026-07-02 17:28:45,490 - model_training - INFO - Epoch [30/67] | Train Loss: 0.4064 | Val Loss: 0.6078 | Val Acc: 77.52% | Val F1: 0.7518
+2026-07-02 17:29:51,967 - model_training - INFO - Epoch [35/67] | Train Loss: 0.3804 | Val Loss: 0.6195 | Val Acc: 78.11% | Val F1: 0.7546
+2026-07-02 17:31:06,743 - model_training - INFO - Epoch [40/67] | Train Loss: 0.3559 | Val Loss: 0.6286 | Val Acc: 75.54% | Val F1: 0.7309
+2026-07-02 17:32:19,607 - model_training - INFO - Epoch [45/67] | Train Loss: 0.3304 | Val Loss: 0.6639 | Val Acc: 76.16% | Val F1: 0.7234
+2026-07-02 17:33:32,967 - model_training - INFO - Epoch [50/67] | Train Loss: 0.3168 | Val Loss: 0.6218 | Val Acc: 75.42% | Val F1: 0.7304
+2026-07-02 17:34:46,239 - model_training - INFO - Epoch [55/67] | Train Loss: 0.2971 | Val Loss: 0.6120 | Val Acc: 76.08% | Val F1: 0.7360
+2026-07-02 17:36:03,690 - model_training - INFO - Epoch [60/67] | Train Loss: 0.2786 | Val Loss: 0.6406 | Val Acc: 76.08% | Val F1: 0.7312
+2026-07-02 17:37:18,232 - model_training - INFO - Epoch [65/67] | Train Loss: 0.2790 | Val Loss: 0.7042 | Val Acc: 74.87% | Val F1: 0.7070
+2026-07-02 17:37:49,040 - model_training - INFO - Epoch [67/67] | Train Loss: 0.2798 | Val Loss: 0.6083 | Val Acc: 75.61% | Val F1: 0.7366
+2026-07-02 17:37:49,040 - model_training - INFO - Training complete.
+2026-07-02 17:37:52,198 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-02 17:37:52,200 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-02 17:37:52,202 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-02 17:37:52,225 - model_training - DEBUG - Training Pipeline Completed Successfully.

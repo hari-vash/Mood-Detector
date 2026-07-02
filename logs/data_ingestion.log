@@ -1,11 +1,11 @@
-2026-06-30 22:43:23,009 - data_ingestion - DEBUG - Initializing Data Ingestion Pipeline
-2026-06-30 22:43:23,009 - data_ingestion - DEBUG - Dataset zip not found. Creating directory.
-2026-06-30 22:43:23,011 - data_ingestion - DEBUG - Triggering Kaggle API download command...
-2026-06-30 22:45:47,003 - data_ingestion - DEBUG - Dataset Downloaded successfully.
-2026-06-30 22:45:47,006 - data_ingestion - DEBUG - Extracting zip archive from challenges-in-representation-learning-facial-expression-recognition-challenge.zip...
-2026-06-30 22:45:51,290 - data_ingestion - DEBUG - Data Extraction Completed. Found data file: train.csv
-2026-06-30 22:45:51,301 - data_ingestion - DEBUG - Reading data.
-2026-06-30 22:45:53,917 - data_ingestion - DEBUG - Converting pixels string column to float numpy arrays...
-2026-06-30 22:46:02,965 - data_ingestion - DEBUG - Data Preprocessing Completed.
-2026-06-30 22:46:03,471 - data_ingestion - DEBUG - Saved processed data.
-2026-06-30 22:46:03,472 - data_ingestion - DEBUG - Data Ingestion Pipeline Completed successfully.
+2026-07-02 17:20:33,922 - data_ingestion - DEBUG - Initializing Data Ingestion Pipeline
+2026-07-02 17:20:33,922 - data_ingestion - DEBUG - Dataset zip not found. Creating directory.
+2026-07-02 17:20:33,923 - data_ingestion - DEBUG - Triggering Kaggle API download command...
+2026-07-02 17:21:47,917 - data_ingestion - DEBUG - Dataset Downloaded successfully.
+2026-07-02 17:21:47,917 - data_ingestion - DEBUG - Extracting zip archive from challenges-in-representation-learning-facial-expression-recognition-challenge.zip...
+2026-07-02 17:21:51,372 - data_ingestion - DEBUG - Data Extraction Completed. Found data file: train.csv
+2026-07-02 17:21:51,383 - data_ingestion - DEBUG - Reading data.
+2026-07-02 17:21:53,446 - data_ingestion - DEBUG - Converting pixels string column to float numpy arrays...
+2026-07-02 17:22:01,848 - data_ingestion - DEBUG - Data Preprocessing Completed.
+2026-07-02 17:22:02,027 - data_ingestion - DEBUG - Saved processed data.
+2026-07-02 17:22:02,028 - data_ingestion - DEBUG - Data Ingestion Pipeline Completed successfully.
