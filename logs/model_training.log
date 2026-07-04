@@ -27,3 +27,42 @@
 2026-07-02 17:37:52,200 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
 2026-07-02 17:37:52,202 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
 2026-07-02 17:37:52,225 - model_training - DEBUG - Training Pipeline Completed Successfully.
+2026-07-04 13:15:57,511 - model_training - DEBUG - Initializing Model Training Pipeline...
+2026-07-04 13:15:57,792 - model_training - DEBUG - Loaded Processed Dataframes
+2026-07-04 13:15:57,976 - model_training - DEBUG - Training Mean: 0.4944, Std: 0.2518
+2026-07-04 13:15:57,977 - model_training - DEBUG - Transformations Defined
+2026-07-04 13:15:57,979 - model_training - DEBUG - DataLoaders Successfully Created
+2026-07-04 13:15:58,956 - model_training - INFO - Using device: cuda
+2026-07-04 13:15:59,052 - model_training - DEBUG - Class Weights Applied: [np.float64(1.3381566940424978), np.float64(0.7411017255071836), np.float64(1.1069772457672813)]
+2026-07-04 13:15:59,062 - model_training - DEBUG - Model, Optimizer, and Loss Function initialized
+2026-07-04 13:16:00,341 - model_training - INFO - Starting training loop...
+2026-07-04 13:16:08,911 - model_training - INFO - Epoch [1/67] | Train Loss: 1.0802 | Val Loss: 1.0645 | Val Acc: 39.93% | Val F1: 0.2943
+2026-07-04 13:16:08,923 - model_training - INFO - New best F1 score (0.2943) achieved. Saved model.
+2026-07-04 13:16:25,395 - model_training - INFO - New best F1 score (0.4013) achieved. Saved model.
+2026-07-04 13:16:33,929 - model_training - INFO - New best F1 score (0.4513) achieved. Saved model.
+2026-07-04 13:16:42,533 - model_training - INFO - Epoch [5/67] | Train Loss: 0.7146 | Val Loss: 0.8302 | Val Acc: 64.36% | Val F1: 0.5675
+2026-07-04 13:16:42,540 - model_training - INFO - New best F1 score (0.5675) achieved. Saved model.
+2026-07-04 13:17:08,035 - model_training - INFO - New best F1 score (0.6656) achieved. Saved model.
+2026-07-04 13:17:25,680 - model_training - INFO - Epoch [10/67] | Train Loss: 0.6135 | Val Loss: 1.0074 | Val Acc: 50.88% | Val F1: 0.4788
+2026-07-04 13:17:43,242 - model_training - INFO - New best F1 score (0.6993) achieved. Saved model.
+2026-07-04 13:18:10,748 - model_training - INFO - Epoch [15/67] | Train Loss: 0.5446 | Val Loss: 0.7236 | Val Acc: 69.38% | Val F1: 0.6517
+2026-07-04 13:18:56,641 - model_training - INFO - Epoch [20/67] | Train Loss: 0.5034 | Val Loss: 0.6563 | Val Acc: 75.81% | Val F1: 0.7207
+2026-07-04 13:18:56,650 - model_training - INFO - New best F1 score (0.7207) achieved. Saved model.
+2026-07-04 13:19:06,540 - model_training - INFO - New best F1 score (0.7453) achieved. Saved model.
+2026-07-04 13:19:51,841 - model_training - INFO - Epoch [25/67] | Train Loss: 0.4616 | Val Loss: 0.6281 | Val Acc: 74.44% | Val F1: 0.7280
+2026-07-04 13:20:59,266 - model_training - INFO - Epoch [30/67] | Train Loss: 0.4178 | Val Loss: 0.6543 | Val Acc: 71.17% | Val F1: 0.7037
+2026-07-04 13:21:09,312 - model_training - INFO - New best F1 score (0.7491) achieved. Saved model.
+2026-07-04 13:21:51,979 - model_training - INFO - Epoch [35/67] | Train Loss: 0.3813 | Val Loss: 0.7716 | Val Acc: 62.33% | Val F1: 0.6013
+2026-07-04 13:22:35,356 - model_training - INFO - New best F1 score (0.7491) achieved. Saved model.
+2026-07-04 13:22:46,836 - model_training - INFO - Epoch [40/67] | Train Loss: 0.3615 | Val Loss: 0.6626 | Val Acc: 76.55% | Val F1: 0.7310
+2026-07-04 13:23:42,209 - model_training - INFO - Epoch [45/67] | Train Loss: 0.3467 | Val Loss: 0.6415 | Val Acc: 74.37% | Val F1: 0.7279
+2026-07-04 13:24:34,181 - model_training - INFO - Epoch [50/67] | Train Loss: 0.3248 | Val Loss: 0.5892 | Val Acc: 75.50% | Val F1: 0.7381
+2026-07-04 13:25:39,891 - model_training - INFO - Epoch [55/67] | Train Loss: 0.3152 | Val Loss: 0.7319 | Val Acc: 68.60% | Val F1: 0.6693
+2026-07-04 13:26:40,004 - model_training - INFO - Epoch [60/67] | Train Loss: 0.3037 | Val Loss: 0.6471 | Val Acc: 72.19% | Val F1: 0.7038
+2026-07-04 13:27:38,774 - model_training - INFO - Epoch [65/67] | Train Loss: 0.2890 | Val Loss: 0.6544 | Val Acc: 73.98% | Val F1: 0.7159
+2026-07-04 13:28:05,635 - model_training - INFO - Epoch [67/67] | Train Loss: 0.2960 | Val Loss: 0.6698 | Val Acc: 70.63% | Val F1: 0.6822
+2026-07-04 13:28:05,635 - model_training - INFO - Training complete.
+2026-07-04 13:28:07,730 - model_training - DEBUG - Saved MLflow run_id to model\run_info.json
+2026-07-04 13:28:07,731 - model_training - DEBUG - Saved Normalization Stats to model\normalization_stats.json
+2026-07-04 13:28:07,732 - model_training - DEBUG - Saved Class weights stats to model\class_weights_stats.json
+2026-07-04 13:28:07,741 - model_training - DEBUG - Training Pipeline Completed Successfully.

@@ -10,7 +10,7 @@ from custom_model import emotionModel
 
 EMOTION_LABELS = {0: "Angry", 1: "Happy", 2: "Sad"}
 
-CASCADE_PATH = cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
+CASCADE_PATH = str(Path(__file__).resolve().parent / "haarcascades" / "haarcascade_frontalface_default.xml")
 
 
 def load_model(model_dir: str = "model") -> tuple[emotionModel, dict]:
@@ -131,6 +131,6 @@ if __name__ == "__main__":
         print(f"File not found: {image_path}")
         sys.exit(1)
 
-    model, stats, device = load_model(model_dir="model")
+    model, stats, device = load_model(model_dir="../model")
     result = predict(image_path.read_bytes(), model, stats, device)
     print(result)

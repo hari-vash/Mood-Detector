@@ -9,3 +9,11 @@
 2026-07-02 17:22:01,848 - data_ingestion - DEBUG - Data Preprocessing Completed.
 2026-07-02 17:22:02,027 - data_ingestion - DEBUG - Saved processed data.
 2026-07-02 17:22:02,028 - data_ingestion - DEBUG - Data Ingestion Pipeline Completed successfully.
+2026-07-04 13:13:16,868 - data_ingestion - DEBUG - Initializing Data Ingestion Pipeline
+2026-07-04 13:13:16,869 - data_ingestion - DEBUG - Dataset zip found at location. Skipping download...
+2026-07-04 13:13:16,870 - data_ingestion - DEBUG - Extracted CSV data already exists: train.csv. Skipping extraction.
+2026-07-04 13:13:16,870 - data_ingestion - DEBUG - Reading data.
+2026-07-04 13:13:19,132 - data_ingestion - DEBUG - Converting pixels string column to float numpy arrays...
+2026-07-04 13:13:27,775 - data_ingestion - DEBUG - Data Preprocessing Completed.
+2026-07-04 13:13:27,965 - data_ingestion - DEBUG - Saved processed data.
+2026-07-04 13:13:27,966 - data_ingestion - DEBUG - Data Ingestion Pipeline Completed successfully.

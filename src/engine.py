@@ -109,7 +109,7 @@ class Trainer:
                 self.best_val_f1 = val_f1
                 save_path = self.save_dir / "best_emotion_model.pth"
                 torch.save(self.model.state_dict(), save_path)  
-                self.logger.info(f"✨ New best F1 score ({val_f1:.4f}) achieved. Saved model.")
+                self.logger.info(f"New best F1 score ({val_f1:.4f}) achieved. Saved model.")
                 
         self.logger.info("Training complete.")
         return self.history
