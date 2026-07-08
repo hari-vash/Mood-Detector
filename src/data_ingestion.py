@@ -7,7 +7,7 @@ from pathlib import Path
 from sklearn.model_selection import train_test_split
 
 # Ensure "logs" directory exists inside the project
-log_dir = Path("logs")
+log_dir = Path("../logs")
 log_dir.mkdir(parents=True, exist_ok=True)
 
 # Configuring logging
@@ -72,7 +72,6 @@ def unzip_data(zip_file_path, target_dir):
         with zipfile.ZipFile(zip_file_path, "r") as zip_ref:
             zip_ref.extractall(raw_dir)
             
-        # Re-check for the CSV file now that it is unzipped
         extracted_csvs = list(raw_dir.glob("*.csv"))
         if not extracted_csvs:
             raise FileNotFoundError(f"No CSV file found in {raw_dir.resolve()} after extraction.")
@@ -125,8 +124,7 @@ def main():
     try:
         logger.debug("Initializing Data Ingestion Pipeline")
         
-        # CHANGED: Use "data" instead of "../data" to keep it INSIDE your project directory
-        target_dir = Path("data") 
+        target_dir = Path("../data") 
         
         # 1. Download zip file
         zip_path = get_data(target_dir)

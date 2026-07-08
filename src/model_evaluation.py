@@ -12,7 +12,7 @@ from custom_dataset import emotionDataset
 from custom_model import emotionModel
 from engine import Evaluator
 
-log_dir = Path("logs")
+log_dir = Path("../logs")
 log_dir.mkdir(parents=True, exist_ok=True)
 
 logger = logging.getLogger("model_evaluation")
@@ -38,10 +38,10 @@ def main():
     try:
         logger.debug("Initializing Model Evaluation Pipeline...")
         
-        data_dir = Path("data/processed")
+        data_dir = Path("../data/processed")
         test_dataframe = pd.read_pickle(data_dir / "test.pkl")
         
-        with open("model/normalization_stats.json") as file:
+        with open("../model/normalization_stats.json") as file:
             data = json.load(file)
         
         transform = transforms.Compose([
@@ -57,11 +57,11 @@ def main():
         
         num_classes = 3
 
-        with open("model/class_weights_stats.json", "r") as file2:
+        with open("../model/class_weights_stats.json", "r") as file2:
             data2 = json.load(file2)
         class_weights_tensor = torch.tensor(data2, dtype=torch.float32).to(device)
         
-        model_path = Path("model/best_emotion_model.pth")
+        model_path = Path("../model/best_emotion_model.pth")
         best_model = emotionModel(num_classes=num_classes)
         
         best_model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
@@ -80,7 +80,7 @@ def main():
         # Run the evaluation loop
         avg_test_loss, test_acc, macro_f1, class_report = evaluator.evaluate()
 
-        run_info_path = Path("model/run_info.json")
+        run_info_path = Path("../model/run_info.json")
         if run_info_path.exists():
             run_id = json.loads(run_info_path.read_text())["run_id"]
             
@@ -101,6 +101,17 @@ def main():
                 "test metrics were NOT logged to MLflow. Run model_training.py "
                 "first so a run_id exists to attach this evaluation to."
             )
+
+        reports_dir = Path("../reports")
+        reports_dir.mkdir(exist_ok=True)
+        eval_metrics = {
+            "test_loss": round(avg_test_loss, 4),
+            "test_acc": round(test_acc, 4),
+            "test_f1": round(macro_f1, 4),
+        }
+        (reports_dir / "eval_metrics.json").write_text(json.dumps(eval_metrics, indent=2))
+        logger.debug("Saved eval metrics to reports/eval_metrics.json")
+
         logger.debug("Evaluation Pipeline Completed Successfully.")
         
     except Exception as e:

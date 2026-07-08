@@ -1,0 +1,118 @@
+schema: '2.0'
+stages:
+  data_ingestion:
+    cmd: cd src && python data_ingestion.py
+    deps:
+    - path: src/data_ingestion.py
+      hash: md5
+      md5: 858b2c7441c101a9615690e93f521408
+      size: 6026
+    - path: src/utils.py
+      hash: md5
+      md5: b17c4592fa1a7ff546afa536fd1a6801
+      size: 578
+    outs:
+    - path: data/processed
+      hash: md5
+      md5: 2a4df31e069e2726edbdae0dee832789.dir
+      size: 148519398
+      nfiles: 3
+    - path: data/raw
+      hash: md5
+      md5: 00597a3f9a18eeac3fd9dd6f2eee89af.dir
+      size: 997402591
+      nfiles: 6
+  model_training:
+    cmd: cd src && python model_training.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 2a4df31e069e2726edbdae0dee832789.dir
+      size: 148519398
+      nfiles: 3
+    - path: src/custom_dataset.py
+      hash: md5
+      md5: 39033c4e09dd228b941c6fbdddbf9fdf
+      size: 1018
+    - path: src/custom_model.py
+      hash: md5
+      md5: caddab67522cf4daf48917c479bc6b61
+      size: 2485
+    - path: src/engine.py
+      hash: md5
+      md5: 650c35a8cd91dc2a24d08ed7fa16e05c
+      size: 6812
+    - path: src/model_training.py
+      hash: md5
+      md5: f87a626900c2c59c0beb1c3272659632
+      size: 6633
+    - path: src/utils.py
+      hash: md5
+      md5: b17c4592fa1a7ff546afa536fd1a6801
+      size: 578
+    outs:
+    - path: model/best_emotion_model.pth
+      hash: md5
+      md5: 8129db602961676630e5ee9fa8d925ca
+      size: 1253733
+    - path: model/class_weights_stats.json
+      hash: md5
+      md5: 81762e8d23603688d50679f339635749
+      size: 60
+    - path: model/normalization_stats.json
+      hash: md5
+      md5: 160a08c76dd8cdbbcfdcd1ad46d6de79
+      size: 71
+    - path: model/run_info.json
+      hash: md5
+      md5: 168eea59159eb50e85bd942cda634e11
+      size: 46
+  model_evaluation:
+    cmd: cd src && python model_evaluation.py
+    deps:
+    - path: data/processed
+      hash: md5
+      md5: 2a4df31e069e2726edbdae0dee832789.dir
+      size: 148519398
+      nfiles: 3
+    - path: model/best_emotion_model.pth
+      hash: md5
+      md5: 8129db602961676630e5ee9fa8d925ca
+      size: 1253733
+    - path: model/class_weights_stats.json
+      hash: md5
+      md5: 81762e8d23603688d50679f339635749
+      size: 60
+    - path: model/normalization_stats.json
+      hash: md5
+      md5: 160a08c76dd8cdbbcfdcd1ad46d6de79
+      size: 71
+    - path: model/run_info.json
+      hash: md5
+      md5: 168eea59159eb50e85bd942cda634e11
+      size: 46
+    - path: src/custom_dataset.py
+      hash: md5
+      md5: 39033c4e09dd228b941c6fbdddbf9fdf
+      size: 1018
+    - path: src/custom_model.py
+      hash: md5
+      md5: caddab67522cf4daf48917c479bc6b61
+      size: 2485
+    - path: src/engine.py
+      hash: md5
+      md5: 650c35a8cd91dc2a24d08ed7fa16e05c
+      size: 6812
+    - path: src/model_evaluation.py
+      hash: md5
+      md5: 365653485f5a9b1cd0acfe5ac392d67f
+      size: 4465
+    - path: src/utils.py
+      hash: md5
+      md5: b17c4592fa1a7ff546afa536fd1a6801
+      size: 578
+    outs:
+    - path: reports/eval_metrics.json
+      hash: md5
+      md5: c40c752cd00c8b8e4b7e4624180fffce
+      size: 71

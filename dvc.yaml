@@ -1,28 +1,40 @@
 stages:
   data_ingestion:
-    cmd: python data_ingestion.py
+    cmd: cd src && python data_ingestion.py
     deps:
-    - src/data_ingestion.py
+      - src/data_ingestion.py
+      - src/utils.py
     outs:
-    - data/raw
-    - data/processed
-  model_training:
-    cmd: python model_training.py
-    deps:
-    - data/processed
-    - src/engine.py
-    - src/custom_dataset.py
-    - src/custom_model.py
-    - src/model_training.py
-    outs:
-    - model/best_emotion_model.pth
-    model_evaluation:
-      cmd: python model_evaluation.py
-      deps:
+      - data/raw
       - data/processed
+
+  model_training:
+    cmd: cd src && python model_training.py
+    deps:
+      - data/processed
+      - src/model_training.py
       - src/engine.py
       - src/custom_dataset.py
       - src/custom_model.py
+      - src/utils.py
+    outs:
+      - model/best_emotion_model.pth
+      - model/normalization_stats.json
+      - model/class_weights_stats.json
+      - model/run_info.json
+
+  model_evaluation:
+    cmd: cd src && python model_evaluation.py
+    deps:
+      - model/best_emotion_model.pth
+      - model/normalization_stats.json
+      - model/class_weights_stats.json
+      - model/run_info.json
+      - data/processed
       - src/model_evaluation.py
-      outs:
-      - 
+      - src/engine.py
+      - src/custom_dataset.py
+      - src/custom_model.py
+      - src/utils.py
+    outs:
+      - reports/eval_metrics.json
