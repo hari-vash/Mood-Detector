@@ -57,3 +57,17 @@ flowchart LR
     style G fill:#9B59B6,color:#fff
 ```
 
+## MLflow Experiment Results
+
+**Metrics across multiple runs**
+
+| Metrics | RUN 1 | RUN 2 | RUN 3 | RUN 4 | RUN 5 |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| Best Validation F1 Score | 0.759 | 0.676 | 0.745 | 0.735 | 0.751 |
+| Train Accuracy | 89.94 | 90.42 | 95.05 | 93.02 | 89.45 |
+| Train Loss | 0.275 | 0.266 | 0.135 | 0.191 | 0.271 |
+| Validation Accuracy | 71.95 | 66.26 | 67.24 | 73.43 | 74.56 |
+| Validaton Loss | 0.637 | 0.938 | 1.043 | 0.695 | 0.608 |
+| Test Accuracy | 78.49 | 69.17 | 74.13 | 75.78 | 78.21 |
+| Test Loss | 0.582 | 0.713 | 0.612 | 0.616 | 0.587 |
+| Test F1 Score | 0.756 | 0.675 | 0.728 | 0.74 | 0.755 |
