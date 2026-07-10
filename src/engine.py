@@ -101,7 +101,7 @@ class Trainer:
             if is_log_epoch or is_first_or_last:
                 self.logger.info(
                     f"Epoch [{epoch + 1}/{self.epochs}] | "
-                    f"Train Loss: {train_loss:.4f} | Val Loss: {val_loss:.4f} | "
+                    f"Train Loss: {train_loss:.4f} | Train Acc: {train_acc:.4f} | Val Loss: {val_loss:.4f} | "
                     f"Val Acc: {val_acc:.2f}% | Val F1: {val_f1:.4f}"
                 )
 

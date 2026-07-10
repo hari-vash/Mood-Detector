@@ -57,17 +57,19 @@ def main():
         
         num_classes = 3
 
-        with open("../model/class_weights_stats.json", "r") as file2:
-            data2 = json.load(file2)
-        class_weights_tensor = torch.tensor(data2, dtype=torch.float32).to(device)
+        class_weights_path = Path("../model/class_weights_stats.json")
+        class_weights_data = json.loads(class_weights_path.read_text())
+        if class_weights_data is not None:
+            class_weights_tensor = torch.tensor(class_weights_data, dtype=torch.float32).to(device)
+            criterion = nn.CrossEntropyLoss(weight=class_weights_tensor)
+        else:
+            criterion = nn.CrossEntropyLoss()
         
         model_path = Path("../model/best_emotion_model.pth")
         best_model = emotionModel(num_classes=num_classes)
         
         best_model.load_state_dict(torch.load(model_path, map_location=device, weights_only=True))
         logger.debug(f"Loaded model weights from {model_path}")
-        
-        criterion = nn.CrossEntropyLoss(weight=class_weights_tensor)
         
         evaluator = Evaluator(
             model=best_model,

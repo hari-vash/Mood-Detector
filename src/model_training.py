@@ -39,7 +39,7 @@ def main():
         logger.debug("Initializing Model Training Pipeline...")
         
         # 1. Define Parameters
-        params = {"batch_size":32,"epochs":10,"learning_rate":0.001,"weight_decay":1e-3}
+        params = {"batch_size":32,"epochs":70,"learning_rate":0.001,"weight_decay":1e-3, "class weights":False}
         
         # 2. Load Data
         data_dir = Path("../data/processed")
@@ -76,16 +76,20 @@ def main():
         
         # 7. Loss Function Weights
         num_classes = 3
-        total_samples = len(train_dataset)
-        samples_in_class = train_dataframe["emotion"].value_counts().sort_index().values
-        
-        class_weights = calculate_weights(total_samples, samples_in_class, num_classes)
-        class_weights_tensor = torch.tensor(class_weights, dtype=torch.float32).to(device)
-        logger.debug(f"Class Weights Applied: {class_weights}")
-        
+        if params["class weights"]:
+            total_samples = len(train_dataset)
+            samples_in_class = train_dataframe["emotion"].value_counts().sort_index().values
+            
+            class_weights = calculate_weights(total_samples, samples_in_class, num_classes)
+            class_weights_tensor = torch.tensor(class_weights, dtype=torch.float32).to(device)
+            logger.debug(f"Class Weights Applied: {class_weights}")
+            criterion = nn.CrossEntropyLoss(weight=class_weights_tensor)
+        else:
+            criterion = nn.CrossEntropyLoss()
+            logger.debug("No class weights applied, using uniform loss")
+            
         # 8. Model, Loss, Optimizer
         model = emotionModel(num_classes=num_classes).to(device)
-        criterion = nn.CrossEntropyLoss(weight=class_weights_tensor)
         optimizer = torch.optim.Adam(model.parameters(), lr=params["learning_rate"], weight_decay=params["weight_decay"])
         logger.debug("Model, Optimizer, and Loss Function initialized")
         
@@ -99,6 +103,7 @@ def main():
                 "batch_size":params["batch_size"],
                 "learning_rate":params["learning_rate"],
                 "weight_decay":params["weight_decay"],
+                "class weights":params["class weights"],
                 "optimizer":"Adam",
                 "num_classes":num_classes,
                 "architecture":"emotionModel (residual CNN)"
@@ -143,10 +148,14 @@ def main():
             normalization_stats_path = Path("../model/normalization_stats.json")
             normalization_stats_path.write_text(json.dumps(normalization_stats))
             logger.debug(f"Saved Normalization Stats to {normalization_stats_path}")
-                
-            class_weights_path = Path("../model/class_weights_stats.json")
-            class_weights_path.write_text(json.dumps(class_weights))
-            logger.debug(f"Saved Class weights stats to {class_weights_path}")
+            
+            if params["class weights"]:
+                class_weights_path = Path("../model/class_weights_stats.json")
+                class_weights_path.write_text(json.dumps(class_weights))
+                logger.debug(f"Saved Class weights stats to {class_weights_path}")
+            else:
+                class_weights_path = Path("../model/class_weights_stats.json")
+                class_weights_path.write_text(json.dumps(None))
                 
         logger.debug("Training Pipeline Completed Successfully.")
         
