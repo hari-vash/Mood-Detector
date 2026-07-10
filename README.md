@@ -11,6 +11,9 @@ docker run -p 8000:8000 mood-detector:v1
 
 then open http://localhost:8000 in your browser
 
+## Introduction
+Most Deep Learning projects live in notebooks. This project demonstrates running experimentations, writing modular code, training custom architectural models from scratch, making it reproducible, using MLOps tools and techniques to make this project close to production ready, versioned and served. Closing the gap between "this works on my machine" and "this works in production".
+
 ## Architecture Overview
 **Pipeline Diagram:**
 
@@ -68,7 +71,7 @@ flowchart LR
 | Train Accuracy | 89.94 | 90.42 | 95.05 | 93.02 | 89.45 |
 | Train Loss | 0.275 | 0.266 | 0.135 | 0.191 | 0.271 |
 | Validation Accuracy | 71.95 | 66.26 | 67.24 | 73.43 | 74.56 |
-| Validaton Loss | 0.637 | 0.938 | 1.043 | 0.695 | 0.608 |
+| Validation Loss | 0.637 | 0.938 | 1.043 | 0.695 | 0.608 |
 | Test Accuracy | 78.49 | 69.17 | 74.13 | 75.78 | 78.21 |
 | Test Loss | 0.582 | 0.713 | 0.612 | 0.616 | 0.587 |
 | Test F1 Score | 0.756 | 0.675 | 0.728 | 0.74 | 0.755 |
@@ -83,9 +86,15 @@ flowchart LR
 | RUN 4 | 64 | 70 | 0.001 | Adam | 0.001 | True |
 | RUN 5 | 32 | 70 | 0.001 | Adam | 0.001 | False |
 
+- Run 1 (baseline with class weights, lr=0.001, batch_size=32) achieved the best validation F1 score of 0.759.
+- Run 2 (lr=0.0001, batch_size=32) shows clear overfitting - high training accuracy with significantly worse validation and test accuracy scores, confirming learning rate is too conservative for this architecture.
+- Run 3 (lower weight decay) overfits too with training accuracy being 95.05% but validation and test accuracy only being 67.24% and 74.13% respectively.
+- Run 4 (increased batch_size to 64) performed significantly well compared to Runs 2 and 3, converged earlier than others, but still show slight overfitting compared to baseline (Run1) and Run 5.
+-  Run 5 (same parameters as Baseline, but without class weights(for loss function)), had similar results to Run 1(baseline) with slightly less overfitting and hence being used for the final application. 
+
 ## Model Details
 
-- **Architecture**
+**Architecture**
 
 The model is a custom Residual Convolutional Neural Network (CNN) designed specifically for edge deployment on grayscale facial crops (48 x 48 pixels). It leverages residual connections to prevent vanishing gradients during backpropagation and heavily features dropout to counteract the noisy nature of the FER2013 dataset.
 
@@ -105,31 +114,13 @@ The model is a custom Residual Convolutional Neural Network (CNN) designed speci
 ```
 Mood-Detector/
 ├── .dvc
-├── .venv
 ├── assets/
 │   ├── demo.gif
 │   └── model_summary.png
-├── data/
-│   ├── processed/
-│   │   ├── test.pkl
-│   │   ├── train.pkl
-│   │   └── validation.pkl
-│   └── raw
 ├── experiments/
 │   └── experimentation.ipynb
-├── logs/
-│   ├── data_ingestion.log
-│   ├── model_evaluation.log
-│   └── model_training.log
-├── mlruns
-├── model/
-│   ├── best_emotion_model.pth
-│   ├── class_weights_stats.json
-│   ├── normalization_stats.json
-│   └── run_info.json
 ├── reports/
 │   ├── .gitignore
-│   └── eval_metrics.json
 ├── src/
 │   ├── haarcascades/
 │   │   └── haarcascade_frontalface_default.xml
@@ -150,7 +141,6 @@ Mood-Detector/
 ├── dockerfile
 ├── dvc.lock
 ├── dvc.yaml
-├── mlflow.db
 ├── pyproject.toml
 ├── README.md
 ├── requirements-docker.txt
@@ -191,6 +181,7 @@ Mood-Detector/
     ```
     uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
     ```
+    (Note:- The link provided for PyTorch installation is for Cuda Version: 12.6)
 
 - **Reproduce Training from Scratch**
     ```
@@ -202,6 +193,7 @@ Mood-Detector/
     cd src
     uvicorn app:app --port 8000
     ```
+
 - **Run via Docker(recommended) - from the root project directory**
     ```
     # build image
@@ -211,3 +203,19 @@ Mood-Detector/
     docker run -p 8000:8000 mood-detector:v1
     ```
     then open http://localhost:8000
+
+## What I'd Add for Production
+- **Model Registry with promotion gates** - Currently the models go straight from training to serving. In production, a new model would have to beat the current production model's F1 on a held-out eval dataset. 
+- **Data Drift Detection** - FER2013 being a lab-collected dataset, the real world data would be different, hence input distribution will diverge over time.
+- **CI/CD Pipeline** - GitHub actions to run tests, validate model performance, build and push docker image. 
+- **Retraining Trigger** - Current retraining is manual. In production it would be triggered by drift detection or on a schedule. 
+- **GPU inference optimization** - Current serving uses CPU. For latency-sensitive production use "ONNX + TensorRT" quantization to reduce inference time significantly. 
+
+# Known Limitations
+- FER2013 is a lab-collected dataset with large class imbalance and noise.
+- Haar cascade face detection is inconsistent and sometimes fails with non-frontal faces, poor lighting etc.
+- 3-class scope is deliberate but limits applicability
+- Model's performance and metrics reflects dataset noise, not architectural failure.
+
+# Acknowledgement/Data
+Dataset used in FER2013, downloaded from kaggle. You can find the dataset [here](https://www.kaggle.com/competitions/challenges-in-representation-learning-facial-expression-recognition-challenge/overview).
