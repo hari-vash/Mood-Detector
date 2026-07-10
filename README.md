@@ -218,4 +218,4 @@ Mood-Detector/
 - Model's performance and metrics reflects dataset noise, not architectural failure.
 
 # Acknowledgement/Data
-Dataset used in FER2013, downloaded from kaggle. You can find the dataset [here](https://www.kaggle.com/competitions/challenges-in-representation-learning-facial-expression-recognition-challenge/overview).
+Dataset used is FER2013, downloaded from kaggle. You can find the dataset [here](https://www.kaggle.com/competitions/challenges-in-representation-learning-facial-expression-recognition-challenge/overview).
