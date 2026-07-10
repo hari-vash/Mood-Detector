@@ -89,3 +89,69 @@ flowchart LR
 The model is a custom Residual Convolutional Neural Network (CNN) designed specifically for edge deployment on grayscale facial crops (48 x 48 pixels). It leverages residual connections to prevent vanishing gradients during backpropagation and heavily features dropout to counteract the noisy nature of the FER2013 dataset.
 
 <img src="assets/model_summary.png" width="700" alt="Model Summary">
+
+## Tech Stack
+
+| Tool | Why |
+|:---:|:---:|
+| DVC | Data Versioning, pipeline reproducibility - `dvc repro` reruns only changed states |
+| MLFlow | Experiment tracking and comparison across runs, model artifacts storage |
+| FastAPI | Typed, async-capable inference serving with auto-generated docs |
+| Docker | Eliminates environment dependency - `docker run -p 8000:8000 mood-detector:v1`|
+| Haar Cascade | Lightweight face detection without a second model dependency |
+
+## Project Structure
+```
+Mood-Detector/
+├── .dvc
+├── .venv
+├── assets/
+│   ├── demo.gif
+│   └── model_summary.png
+├── data/
+│   ├── processed/
+│   │   ├── test.pkl
+│   │   ├── train.pkl
+│   │   └── validation.pkl
+│   └── raw
+├── experiments/
+│   └── experimentation.ipynb
+├── logs/
+│   ├── data_ingestion.log
+│   ├── model_evaluation.log
+│   └── model_training.log
+├── mlruns
+├── model/
+│   ├── best_emotion_model.pth
+│   ├── class_weights_stats.json
+│   ├── normalization_stats.json
+│   └── run_info.json
+├── reports/
+│   ├── .gitignore
+│   └── eval_metrics.json
+├── src/
+│   ├── haarcascades/
+│   │   └── haarcascade_frontalface_default.xml
+│   ├── static/
+│   │   └── index.html
+│   ├── app.py
+│   ├── custom_dataset.py
+│   ├── custom_model.py
+│   ├── data_ingestion.py
+│   ├── engine.py
+│   ├── model_evaluation.py
+│   ├── model_training.py
+│   ├── predict.py
+│   └── utils.py
+├── .dvcignore
+├── .gitignore
+├── .python-version
+├── dockerfile
+├── dvc.lock
+├── dvc.yaml
+├── mlflow.db
+├── pyproject.toml
+├── README.md
+├── requirements-docker.txt
+└── uv.lock
+```
