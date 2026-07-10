@@ -71,3 +71,13 @@ flowchart LR
 | Test Accuracy | 78.49 | 69.17 | 74.13 | 75.78 | 78.21 |
 | Test Loss | 0.582 | 0.713 | 0.612 | 0.616 | 0.587 |
 | Test F1 Score | 0.756 | 0.675 | 0.728 | 0.74 | 0.755 |
+
+**Parameters across multiple runs**
+
+| RUNS | Batch Size | Epochs | Learning Rate | Optimizer | Weight Decay | Class Weights |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| RUN 1 | 32 | 70 | 0.001 | Adam | 0.001 | True |
+| RUN 2 | 32 | 70 | 0.0001 | Adam | 0.001 | True |
+| RUN 3 | 32 | 70 | 0.001 | Adam | 0.0001 | True |
+| RUN 4 | 64 | 70 | 0.001 | Adam | 0.001 | True |
+| RUN 5 | 32 | 70 | 0.001 | Adam | 0.001 | False |
