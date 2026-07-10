@@ -4,9 +4,10 @@ An end-to-end emotion classification pipeline: from raw FER2013 data to containe
 ## DEMO
 <img src="assets/demo.gif" width="700" alt="Mood Detector Demo UI">
 
-`docker build -t mood-detector:v1 .`
-
-`docker run -p 8000:8000 mood-detector:v1`
+```
+docker build -t mood-detector:v1 .
+docker run -p 8000:8000 mood-detector:v1
+```
 
 then open http://localhost:8000 in your browser
 
@@ -155,3 +156,58 @@ Mood-Detector/
 ├── requirements-docker.txt
 └── uv.lock
 ```
+
+## How to Run
+
+- **Setup Kaggle API**
+    - Go to the 'Account' tab on your Kaggle Profile.
+    - Click 'Create New Token'. This will download a file named kaggle.json containing your API credentials.
+    - Move this file to the appropriate location:
+        - Linux/OSX: `~/.kaggle/kaggle.json`
+        - Windows: `C:\Users\Windows-username\.kaggle\kaggle.json`
+
+- **Clone the GitHub Repository**
+    ```
+    git clone https://github.com/hari-vash/Mood-Detector
+    cd Mood-Detector
+    ```
+
+- **Configure virtual environment**
+    ```
+    # create the virtual envrionment
+    uv venv .
+
+    # activate the environment
+    # macOS/linux
+    source .venv/bin/activate
+    # Windows
+    .venv\Scripts\activate
+
+    # install the dependencies
+    uv sync
+    ```
+
+- **Install PyTorch with CUDA support (skip --index-url for CPU-only)**
+    ```
+    uv pip install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+    ```
+
+- **Reproduce Training from Scratch**
+    ```
+    dvc repro
+    ```
+
+- **Running the API locally**
+    ```
+    cd src
+    uvicorn app:app --port 8000
+    ```
+- **Run via Docker(recommended) - from the root project directory**
+    ```
+    # build image
+    docker build -t mood-detector:v1 .
+
+    # run as a container
+    docker run -p 8000:8000 mood-detector:v1
+    ```
+    then open http://localhost:8000
