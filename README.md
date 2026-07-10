@@ -81,3 +81,11 @@ flowchart LR
 | RUN 3 | 32 | 70 | 0.001 | Adam | 0.0001 | True |
 | RUN 4 | 64 | 70 | 0.001 | Adam | 0.001 | True |
 | RUN 5 | 32 | 70 | 0.001 | Adam | 0.001 | False |
+
+## Model Details
+
+- **Architecture**
+
+The model is a custom Residual Convolutional Neural Network (CNN) designed specifically for edge deployment on grayscale facial crops (48 x 48 pixels). It leverages residual connections to prevent vanishing gradients during backpropagation and heavily features dropout to counteract the noisy nature of the FER2013 dataset.
+
+<img src="assets/model_summary.png" width="700" alt="Model Summary">
