@@ -104,7 +104,7 @@ The model is a custom Residual Convolutional Neural Network (CNN) designed speci
 
 | Tool | Why |
 |:---:|:---:|
-| DVC | Data Versioning, pipeline reproducibility - `dvc repro` reruns only changed states |
+| DVC | Data Versioning, pipeline reproducibility - `dvc repro` reruns only changed stages |
 | MLFlow | Experiment tracking and comparison across runs, model artifacts storage |
 | FastAPI | Typed, async-capable inference serving with auto-generated docs |
 | Docker | Eliminates environment dependency - `docker run -p 8000:8000 mood-detector:v1`|
@@ -186,6 +186,9 @@ Mood-Detector/
 - **Reproduce Training from Scratch**
     ```
     dvc repro
+
+    # View experiment results after training
+    mlflow ui --backend-store-uri sqlite:///mlflow.db
     ```
 
 - **Running the API locally**
@@ -214,7 +217,7 @@ Mood-Detector/
 # Known Limitations
 - FER2013 is a lab-collected dataset with large class imbalance and noise.
 - Haar cascade face detection is inconsistent and sometimes fails with non-frontal faces, poor lighting etc.
-- 3-class scope is deliberate but limits applicability
+- 3-class scope is deliberate but limits applicability.
 - Model's performance and metrics reflects dataset noise, not architectural failure.
 
 # Acknowledgement/Data
